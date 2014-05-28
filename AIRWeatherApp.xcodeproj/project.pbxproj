@@ -21,6 +21,9 @@
 		06FCD83B19366A3D00A89C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FCD81D19366A3D00A89C44 /* UIKit.framework */; };
 		06FCD84319366A3D00A89C44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06FCD84119366A3D00A89C44 /* InfoPlist.strings */; };
 		06FCD84519366A3D00A89C44 /* AIRWeatherAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FCD84419366A3D00A89C44 /* AIRWeatherAppTests.m */; };
+		06FCD85219366E4500A89C44 /* AIROpenWeatherMapConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FCD85119366E4500A89C44 /* AIROpenWeatherMapConnector.m */; };
+		06FCD85419367A3F00A89C44 /* clouds.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 06FCD85319367A3F00A89C44 /* clouds.jpg */; };
+		06FCD85719367B7F00A89C44 /* AIRTemperatureConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 06FCD85619367B7F00A89C44 /* AIRTemperatureConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,11 @@
 		06FCD84019366A3D00A89C44 /* AIRWeatherAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AIRWeatherAppTests-Info.plist"; sourceTree = "<group>"; };
 		06FCD84219366A3D00A89C44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		06FCD84419366A3D00A89C44 /* AIRWeatherAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIRWeatherAppTests.m; sourceTree = "<group>"; };
+		06FCD85019366E4500A89C44 /* AIROpenWeatherMapConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIROpenWeatherMapConnector.h; sourceTree = "<group>"; };
+		06FCD85119366E4500A89C44 /* AIROpenWeatherMapConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIROpenWeatherMapConnector.m; sourceTree = "<group>"; };
+		06FCD85319367A3F00A89C44 /* clouds.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = clouds.jpg; path = ../../clouds.jpg; sourceTree = "<group>"; };
+		06FCD85519367B7F00A89C44 /* AIRTemperatureConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIRTemperatureConverter.h; sourceTree = "<group>"; };
+		06FCD85619367B7F00A89C44 /* AIRTemperatureConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIRTemperatureConverter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,10 @@
 				06FCD82F19366A3D00A89C44 /* AIRViewController.m */,
 				06FCD83119366A3D00A89C44 /* Images.xcassets */,
 				06FCD82019366A3D00A89C44 /* Supporting Files */,
+				06FCD85019366E4500A89C44 /* AIROpenWeatherMapConnector.h */,
+				06FCD85119366E4500A89C44 /* AIROpenWeatherMapConnector.m */,
+				06FCD85519367B7F00A89C44 /* AIRTemperatureConverter.h */,
+				06FCD85619367B7F00A89C44 /* AIRTemperatureConverter.m */,
 			);
 			path = AIRWeatherApp;
 			sourceTree = "<group>";
@@ -126,6 +138,7 @@
 		06FCD82019366A3D00A89C44 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06FCD85319367A3F00A89C44 /* clouds.jpg */,
 				06FCD82119366A3D00A89C44 /* AIRWeatherApp-Info.plist */,
 				06FCD82219366A3D00A89C44 /* InfoPlist.strings */,
 				06FCD82519366A3D00A89C44 /* main.m */,
@@ -232,6 +245,7 @@
 				06FCD83219366A3D00A89C44 /* Images.xcassets in Resources */,
 				06FCD82419366A3D00A89C44 /* InfoPlist.strings in Resources */,
 				06FCD82D19366A3D00A89C44 /* Main.storyboard in Resources */,
+				06FCD85419367A3F00A89C44 /* clouds.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +266,8 @@
 			files = (
 				06FCD82619366A3D00A89C44 /* main.m in Sources */,
 				06FCD82A19366A3D00A89C44 /* AIRAppDelegate.m in Sources */,
+				06FCD85719367B7F00A89C44 /* AIRTemperatureConverter.m in Sources */,
+				06FCD85219366E4500A89C44 /* AIROpenWeatherMapConnector.m in Sources */,
 				06FCD83019366A3D00A89C44 /* AIRViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

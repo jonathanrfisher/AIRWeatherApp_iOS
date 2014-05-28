@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AIROpenWeatherMapConnector.h"
 
-@interface AIRViewController : UIViewController
+@interface AIRViewController : UIViewController <AIROpenWeatherMapConnectorDelegate>
+
+- (void) openWeatherMapConnectionDidReceiveDataWithDictionary:(NSDictionary *)weatherDataDictionary;
+@property (weak, nonatomic) IBOutlet UIImageView *weatherImage;
+@property (weak, nonatomic) IBOutlet UILabel *currentTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *highTempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lowTempLabel;
 
 @end

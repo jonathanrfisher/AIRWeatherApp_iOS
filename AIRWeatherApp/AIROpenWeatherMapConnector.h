@@ -10,14 +10,21 @@
 
 @protocol AIROpenWeatherMapConnectorDelegate <NSObject>
 
-- (void) openWeatherMapConnectionDidReceiveDataWithDictionary:(NSDictionary *)weatherDataDictionary;
+- (void) openWeatherMapConnectionDidReceiveData;
 
 @end
 
 @interface AIROpenWeatherMapConnector : NSObject <NSURLConnectionDelegate, NSXMLParserDelegate>
 
-- (void)openNewConnection;
+- (void)openNewConnectionWithPlaceString:(NSString *)placeName;
 
 @property (strong) id delegate;
+
+//Weather data properties
+@property double currentTemp;
+@property double maxTemp;
+@property double minTemp;
+@property NSString *placeName;
+@property NSURL *weatherIconURL;
 
 @end

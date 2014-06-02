@@ -7,6 +7,17 @@
 //
 
 #import "AIROpenWeatherMapConnector.h"
+#import "AIRTemperatureConverter.h"
+
+static NSString * const kMain = @"main";
+static NSString * const kList = @"list";
+static NSString * const kUrl = @"url";
+static NSString * const kTemp = @"temp";
+static NSString * const kTempMin = @"temp_min";
+static NSString * const kTempMax = @"temp_max";
+static NSString * const kWeather = @"weather";
+static NSString * const kIcon = @"icon";
+static NSString * const kName = @"name";
 
 @interface AIROpenWeatherMapConnector ()
 
@@ -16,10 +27,11 @@
 
 @implementation AIROpenWeatherMapConnector
 
-- (void)openNewConnection
+- (void)openNewConnectionWithPlaceString:(NSString *)placeName
 {
+    //Connection should accept a "location string"
     self.apiReturnData = [NSMutableData new];
-    NSString *callString = @"http://api.openweathermap.org/data/2.1/find/name?q=atlanta";
+    NSString *callString = [NSString stringWithFormat:@"http://api.openweathermap.org/data/2.5/weather?q=%@",placeName];
     NSURL *urlForCall = [NSURL URLWithString:callString];
     NSURLRequest *callRequest = [NSURLRequest requestWithURL:urlForCall];
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:callRequest delegate:self];
@@ -45,7 +57,24 @@
     NSError *error;
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:self.apiReturnData options:kNilOptions error:&error];
     
-    [self.delegate openWeatherMapConnectionDidReceiveDataWithDictionary:jsonDictionary];
+    NSNumber *currentTempNumber = jsonDictionary[kMain][kTemp];
+    NSNumber *maxTemp = jsonDictionary[kMain][kTempMax];
+    NSNumber *minTemp = jsonDictionary[kMain][kTempMin];
+    NSString *placeName = jsonDictionary[kName];
+    
+    self.currentTemp = [AIRTemperatureConverter convertKelvinToFahrenheitWithKelvinTemp:[currentTempNumber doubleValue]];
+    self.maxTemp = [AIRTemperatureConverter convertKelvinToFahrenheitWithKelvinTemp:[maxTemp doubleValue]];
+    self.minTemp = [AIRTemperatureConverter convertKelvinToFahrenheitWithKelvinTemp:[minTemp doubleValue]];
+    self.placeName = placeName;
+    
+    NSString *iconString = jsonDictionary[kWeather][0][kIcon];
+    NSString *urlString = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png",iconString];
+    NSURL *urlForIcon = [NSURL URLWithString:urlString];
+    
+    self.weatherIconURL = urlForIcon;
+    
+    //Don't pass back dict
+    [self.delegate openWeatherMapConnectionDidReceiveData];
 }
 
 @end

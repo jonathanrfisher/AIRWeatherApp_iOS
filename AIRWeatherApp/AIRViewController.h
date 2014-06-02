@@ -11,7 +11,7 @@
 
 @interface AIRViewController : UIViewController <AIROpenWeatherMapConnectorDelegate>
 
-- (void) openWeatherMapConnectionDidReceiveDataWithDictionary:(NSDictionary *)weatherDataDictionary;
+- (void) openWeatherMapConnectionDidReceiveData;
 @property (weak, nonatomic) IBOutlet UIImageView *weatherImage;
 @property (weak, nonatomic) IBOutlet UILabel *currentTempLabel;
 @property (weak, nonatomic) IBOutlet UILabel *highTempLabel;

@@ -10,7 +10,6 @@
 
 @interface AIRTemperatureConverter : NSObject
 
-+ (NSString *)convertKelvinToFahrenheitWithStringForKelvin:(NSString *)kelvinString;
-+ (NSString *)convertKelvinToCelsiusWithStringForKelvin:(NSString *)kelvinString;
++ (double)convertKelvinToFahrenheitWithKelvinTemp:(double)kelvinTemp;
 
 @end

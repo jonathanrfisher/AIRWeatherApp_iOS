@@ -7,16 +7,43 @@
 //
 
 #import "AIRTemperatureConverter.h"
-#define fahrenheitMultiplier 1.7
-#define kelvinModifier 272.15
+#define kFahrenheitMultiplier 1.8
+#define kFahrenheitModifier 273.15
+#define kCelsiusModifier 275
 
 @implementation AIRTemperatureConverter
 
+/**
+ *  Converts temperatures from Kelvin to Fahrenheit. This should work =)
+ *
+ *  @param kelvinTemp kelvin temperature given as a double.
+ *
+ *  @return fahrenheit temperature returned as a double.
+ */
 + (double)convertKelvinToFahrenheitWithKelvinTemp:(double)kelvinTemp
 {
-    double fahrenheitTemp = (fahrenheitMultiplier) * (kelvinTemp - kelvinModifier) + 32;
+    //Direct conversion from double to int will perform truncation.
+    double fahrenheitTemp = (kFahrenheitMultiplier) * (kelvinTemp - kFahrenheitModifier) + 32;
+    
+    char *p = malloc(sizeof(char) * 12);
+    
+    NSLog(@"%s",p);
     
     return fahrenheitTemp;
+}
+
+/**
+ *  Converts temperatures from Kelvin to Celsius.  Something may be wrong here...
+ *
+ *  @param kelvinTemp kelvin temperature given as a double.
+ *
+ *  @return fahrenheit temperature returned as a double.
+ */
++ (double)convertKelvinToCelsiusWithKelvinTemp:(double)kelvinTemp
+{
+    double celsiusTemp = kelvinTemp - kCelsiusModifier;
+    
+    return celsiusTemp;
 }
 
 @end

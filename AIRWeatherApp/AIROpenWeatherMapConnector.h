@@ -8,6 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const kMain = @"main";
+static NSString * const kList = @"list";
+static NSString * const kUrl = @"url";
+static NSString * const kTemp = @"temp";
+static NSString * const kTempMin = @"temp_min";
+static NSString * const kTempMax = @"temp_max";
+static NSString * const kWeather = @"weather";
+static NSString * const kIcon = @"icon";
+static NSString * const kName = @"name";
+
+static NSString * const kImageURLString = @"http://openweathermap.org/img/w/%@.png";
+
 @protocol AIROpenWeatherMapConnectorDelegate <NSObject>
 
 - (void) openWeatherMapConnectionDidReceiveData;

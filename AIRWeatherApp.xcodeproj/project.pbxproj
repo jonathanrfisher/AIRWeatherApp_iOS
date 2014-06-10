@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0656D0FB194662A200FFD9CD /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0656D0FA194662A200FFD9CD /* libOCMock.a */; };
 		06FCD81A19366A3D00A89C44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FCD81919366A3D00A89C44 /* Foundation.framework */; };
 		06FCD81C19366A3D00A89C44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FCD81B19366A3D00A89C44 /* CoreGraphics.framework */; };
 		06FCD81E19366A3D00A89C44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06FCD81D19366A3D00A89C44 /* UIKit.framework */; };
@@ -37,6 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0656D0FA194662A200FFD9CD /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOCMock.a; sourceTree = "<group>"; };
+		0656D0FD194662AD00FFD9CD /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		0656D0FE194662AD00FFD9CD /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
+		0656D0FF194662AD00FFD9CD /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
+		0656D100194662AD00FFD9CD /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMock.h; sourceTree = "<group>"; };
+		0656D101194662AD00FFD9CD /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockObject.h; sourceTree = "<group>"; };
+		0656D102194662AD00FFD9CD /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMockRecorder.h; sourceTree = "<group>"; };
 		06FCD81619366A3D00A89C44 /* AIRWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIRWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06FCD81919366A3D00A89C44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06FCD81B19366A3D00A89C44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06FCD83919366A3D00A89C44 /* XCTest.framework in Frameworks */,
+				0656D0FB194662A200FFD9CD /* libOCMock.a in Frameworks */,
 				06FCD83B19366A3D00A89C44 /* UIKit.framework in Frameworks */,
 				06FCD83A19366A3D00A89C44 /* Foundation.framework in Frameworks */,
 			);
@@ -87,12 +96,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0656D0581946608200FFD9CD /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0656D0FC194662AD00FFD9CD /* OCMock */,
+				0656D0FA194662A200FFD9CD /* libOCMock.a */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		0656D0FC194662AD00FFD9CD /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				0656D0FD194662AD00FFD9CD /* NSNotificationCenter+OCMAdditions.h */,
+				0656D0FE194662AD00FFD9CD /* OCMArg.h */,
+				0656D0FF194662AD00FFD9CD /* OCMConstraint.h */,
+				0656D100194662AD00FFD9CD /* OCMock.h */,
+				0656D101194662AD00FFD9CD /* OCMockObject.h */,
+				0656D102194662AD00FFD9CD /* OCMockRecorder.h */,
+			);
+			path = OCMock;
+			sourceTree = "<group>";
+		};
 		06FCD80D19366A3D00A89C44 = {
 			isa = PBXGroup;
 			children = (
 				06FCD81F19366A3D00A89C44 /* AIRWeatherApp */,
 				06FCD83E19366A3D00A89C44 /* AIRWeatherAppTests */,
 				06FCD81819366A3D00A89C44 /* Frameworks */,
+				0656D0581946608200FFD9CD /* Libraries */,
 				06FCD81719366A3D00A89C44 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -420,6 +452,7 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AIRWeatherApp.app/AIRWeatherApp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(SRCROOT)",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
@@ -429,7 +462,26 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/OCMock",
+				);
+				"HEADER_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
 				INFOPLIST_FILE = "AIRWeatherAppTests/AIRWeatherAppTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -442,12 +494,28 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AIRWeatherApp.app/AIRWeatherApp";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(SRCROOT)",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AIRWeatherApp/AIRWeatherApp-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/OCMock",
+				);
 				INFOPLIST_FILE = "AIRWeatherAppTests/AIRWeatherAppTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Libraries",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-all_load",
+					"-framework",
+					XCTest,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -473,6 +541,7 @@
 				06FCD84A19366A3D00A89C44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		06FCD84B19366A3D00A89C44 /* Build configuration list for PBXNativeTarget "AIRWeatherAppTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +550,7 @@
 				06FCD84D19366A3D00A89C44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,16 +9,6 @@
 #import "AIROpenWeatherMapConnector.h"
 #import "AIRTemperatureConverter.h"
 
-static NSString * const kMain = @"main";
-static NSString * const kList = @"list";
-static NSString * const kUrl = @"url";
-static NSString * const kTemp = @"temp";
-static NSString * const kTempMin = @"temp_min";
-static NSString * const kTempMax = @"temp_max";
-static NSString * const kWeather = @"weather";
-static NSString * const kIcon = @"icon";
-static NSString * const kName = @"name";
-
 @interface AIROpenWeatherMapConnector ()
 
 @property (nonatomic, strong) NSMutableData *apiReturnData;
@@ -57,6 +47,13 @@ static NSString * const kName = @"name";
     NSError *error;
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:self.apiReturnData options:kNilOptions error:&error];
     
+    if (error)
+    {
+        //Terrible error handling.
+        NSLog(@"%@",[error localizedDescription]);
+        return;
+    }
+    
     NSNumber *currentTempNumber = jsonDictionary[kMain][kTemp];
     NSNumber *maxTemp = jsonDictionary[kMain][kTempMax];
     NSNumber *minTemp = jsonDictionary[kMain][kTempMin];
@@ -68,12 +65,11 @@ static NSString * const kName = @"name";
     self.placeName = placeName;
     
     NSString *iconString = jsonDictionary[kWeather][0][kIcon];
-    NSString *urlString = [NSString stringWithFormat:@"http://openweathermap.org/img/w/%@.png",iconString];
+    NSString *urlString = [NSString stringWithFormat:kImageURLString,iconString];
     NSURL *urlForIcon = [NSURL URLWithString:urlString];
     
     self.weatherIconURL = urlForIcon;
     
-    //Don't pass back dict
     [self.delegate openWeatherMapConnectionDidReceiveData];
 }
 

@@ -14,6 +14,8 @@
 {
     // Override point for customization after application launch.
     [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"clouds.jpg"]]];
+    NSLog(@"Whether you like the weather or whether you do not, at least you aren't a wether.  Google it.");
+    
     return YES;
 }
 
